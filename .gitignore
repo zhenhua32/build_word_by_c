@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# 自己加
+.vs/
+Debug/
