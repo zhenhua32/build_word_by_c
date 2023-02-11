@@ -42,6 +42,10 @@ int main()
     float float_num1 = 3.14;
     auto result = float_num0 + float_num1;
     printf("result = %f, sizeof = %d byte\n", result, sizeof(result));
+
+    // 类型溢出
+    short small_num = 10000 * 10000;
+    printf("small_num = %d\n", small_num);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
