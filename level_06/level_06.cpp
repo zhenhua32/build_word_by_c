@@ -3,9 +3,28 @@
 
 #include <iostream>
 
-int main()
+
+int max_value(int a, int b) {
+    return a > b ? a : b;
+}
+
+// 返回指针的函数
+int* max(int a, int b) {
+    return &(a > b ? a : b);
+}
+
+
+// 指针数组可以作为 main 函数的参数, 用来接受系统传进来的参数
+int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
+
+    // 接受到的参数
+    printf("接受到参数 argc=%d, argv=%p\n", argc, argv);
+    // 打印指针数组
+    for (int i = 0; i < argc; i++) {
+        printf("argv[%d]=%s\n", i, argv[i]);
+    }
 
     // 定义指针变量
     int a = 1, b = 2;
@@ -26,6 +45,33 @@ int main()
 
     // 数组的指针
     int(*e)[10];
+
+    // 字符数组
+    char str1[] = "hello";
+    char str2[] = "hello";
+    printf("str1 的地址是 %p\n", str1);
+    printf("str2 的地址是 %p\n", str2);  // 和 str1 指向不同的地址
+
+    // 字符指针
+    const char* str3 = "hello";
+    const char* str4 = "hello";
+    printf("str3 的地址是 %p\n", str3);
+    printf("str4 的地址是 %p\n", str4);  // 和 str3 指向相同的地址
+
+    // 函数的指针
+    printf("max_value(1, 2) 返回 %d \n", max_value(1, 2));
+    // 定义一个函数的指针, 注意, (*maxp) 的括号不能省略
+    int (*maxp) (int, int);
+    maxp = max_value;
+    printf("(*maxp)(1, 2) 返回 %d \n", (*maxp)(1, 2));
+
+    // 调用返回指针的函数
+    printf("调用返回指针的函数 *max(1, 2) 的地址是 %p, 值是 %d\n", max(1, 2), *max(1,2));
+    
+    // 指针数组
+    int* j[4];
+    // 数组的指针
+    int(*k)[4];
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
