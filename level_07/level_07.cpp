@@ -17,6 +17,14 @@ union car {
     char carname[100];
 };
 
+// 用 typedef 定义新类型
+typedef int INT;
+typedef struct date {
+    int year;
+    int month;
+    int day;
+} DATE;
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -45,6 +53,26 @@ int main()
 
     // 使用共用体
     union car car1;
+
+    // 定义枚举
+    enum color{
+        RED,
+        GREEN,
+        BLUE = 4,
+        YELLOW
+    };
+    // 使用枚举
+    enum color color1, color2;
+    color1 = color::RED;
+    color2 = color::BLUE;
+    printf("color1 的值是 %d, color2 的值是 %d\n", color1, color2);
+    printf("RED: %d, GREEN: %d, BLUE: %d, YELLOW: %d\n", RED, GREEN, BLUE, YELLOW);
+
+    // 使用 typedef 新定义的类型
+    INT a = 16;
+    printf("a=%d\n", a);
+    DATE date1 = { 2023, 2, 15 };
+    printf("date1: year=%d, month=%d, day=%d\n", date1.year, date1.month, date1.day);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
